@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+  }
+  
+  .container {
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 20px;
+  }
+  
+  .card {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  /* Global styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+@media (max-width: 768px) {
+  .login-container, .register-container, .forgot-password-container, .dashboard-container, .create-edit-brag-container {
+    padding: 10px;
+    margin: 0;
+  }
+
+  .login-container input, .register-container input, .forgot-password-container input, .create-edit-brag-container input {
+    padding: 8px;
+  }
+
+  .login-container button, .register-container button, .forgot-password-container button, .create-edit-brag-container button {
+    padding: 8px;
+  }
+}
