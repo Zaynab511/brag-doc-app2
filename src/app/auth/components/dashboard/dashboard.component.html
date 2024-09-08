@@ -1,0 +1,24 @@
+<div class="dashboard-container">
+  <header>
+    <div class="profile-logo" (click)="viewProfile()">
+      <img src="../../../../assets/profile-icon.jpg" alt="Profile Logo">
+    </div>
+    <h2>Dashboard</h2>
+  </header>
+
+  <div *ngIf="brags.length === 0" class="no-brags">
+    <p>No achievements yet</p>
+    <button (click)="navigateToCreate()" class="btn btn-primary">Create New Achievement</button>
+  </div>
+
+  <div *ngIf="brags.length > 0" class="brag-list">
+    <button (click)="navigateToCreate()" class="btn btn-primary">Create New Achievement</button>
+    <ul>
+      <li *ngFor="let brag of brags" class="brag-item">
+        <p>{{ brag.title }} - {{ brag.date | date }}</p>
+        <button *ngIf="brag.id !== undefined" (click)="deleteBrag(brag.id!)" class="btn btn-danger">Delete</button>
+        <a [routerLink]="['/brag/edit', brag.id]" class="btn btn-secondary">Edit</a>
+      </li>
+    </ul>
+  </div>
+</div>

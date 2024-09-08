@@ -1,0 +1,35 @@
+<div class="register-container">
+  <h2>Register</h2>
+  <form (ngSubmit)="register()">
+    <label for="email">Email:</label>
+    <input type="email" id="email" [(ngModel)]="email" name="email" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" [(ngModel)]="password" name="password" required>
+
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" [(ngModel)]="name" name="name" required>
+
+    <label for="jobTitle">Job Title:</label>
+    <input type="text" id="jobTitle" [(ngModel)]="jobTitle" name="jobTitle" required>
+
+    <label for="industry">Industry:</label>
+    <input type="text" id="industry" [(ngModel)]="industry" name="industry" required>
+
+    <label for="contact">Contact:</label>
+    <input type="text" id="contact" [(ngModel)]="contact" name="contact" required>
+
+    <button type="submit">Register</button>
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+  </form>
+
+  <div class="button-group">
+    <button (click)="loginWithGoogle()">Register with Google</button>
+    <button (click)="loginWithLinkedIn()">Register with LinkedIn</button>
+    <button (click)="goToLogin()">Already have an account? Login</button>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+      
+      <!-- Display error message -->
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+      
+      <div class="button-group">
+        <button type="button" (click)="goToForgotPassword()" class="btn btn-link">Forgot Password</button>
+        <button type="button" (click)="goToRegister()" class="btn btn-link">Don't have an account? Register</button>
+      </div>
+    </form>
+  </div>
+</div>
