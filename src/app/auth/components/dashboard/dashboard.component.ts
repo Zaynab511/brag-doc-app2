@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BragDocService } from '../../../brag-doc/services/brag-doc.service';
-import { BragDoc } from '../../../brag-doc/models/brag-doc.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,40 +7,24 @@ import { BragDoc } from '../../../brag-doc/models/brag-doc.model';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  brags: BragDoc[] = [];
+  message: string | null = null;
 
-  constructor(private bragDocService: BragDocService, private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.loadBrags();
-  }
-
-  loadBrags(): void {
-    this.bragDocService.getAllBrags().subscribe(
-      (brags: BragDoc[]) => {
-        this.brags = brags;
-      },
-      (error) => {
-        console.error('Error fetching brags', error);
-      }
-    );
-  }
-
-  deleteBrag(id: number): void {
-    if (id !== undefined) {
-      this.bragDocService.deleteBrag(id).subscribe(
-        () => {
-          this.loadBrags(); // Refresh the list after deletion
-        },
-        (error) => {
-          console.error('Error deleting brag', error);
-        }
-      );
+    const successMessage = sessionStorage.getItem('achievementMessage');
+    if (successMessage) {
+      this.message = successMessage;
+      sessionStorage.removeItem('achievementMessage'); // Clear the message after displaying
     }
   }
 
   navigateToCreate(): void {
     this.router.navigate(['/brag/create']);
+  }
+
+  navigateToView(): void {
+    this.router.navigate(['/list-brag']); // Updated to match the route path
   }
 
   viewProfile(): void {

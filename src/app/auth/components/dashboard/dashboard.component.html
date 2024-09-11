@@ -6,19 +6,10 @@
     <h2>Dashboard</h2>
   </header>
 
-  <div *ngIf="brags.length === 0" class="no-brags">
-    <p>No achievements yet</p>
-    <button (click)="navigateToCreate()" class="btn btn-primary">Create New Achievement</button>
+  <div *ngIf="message" class="alert alert-success">
+    {{ message }}
   </div>
 
-  <div *ngIf="brags.length > 0" class="brag-list">
-    <button (click)="navigateToCreate()" class="btn btn-primary">Create New Achievement</button>
-    <ul>
-      <li *ngFor="let brag of brags" class="brag-item">
-        <p>{{ brag.title }} - {{ brag.date | date }}</p>
-        <button *ngIf="brag.id !== undefined" (click)="deleteBrag(brag.id!)" class="btn btn-danger">Delete</button>
-        <a [routerLink]="['/brag/edit', brag.id]" class="btn btn-secondary">Edit</a>
-      </li>
-    </ul>
-  </div>
+  <button (click)="navigateToCreate()" class="btn btn-primary">Create New Achievement</button>
+  <button (click)="navigateToView()" class="btn btn-secondary">View Achievements</button>
 </div>

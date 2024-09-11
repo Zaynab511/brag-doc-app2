@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module';
 import { BragDocModule } from './brag-doc/brag-doc.module';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
+import { QuillModule } from 'ngx-quill';
 
 import { RouterModule } from '@angular/router'; // Ensure RouterModule is imported
 @NgModule({
@@ -24,6 +25,7 @@ import { RouterModule } from '@angular/router'; // Ensure RouterModule is import
     AuthModule,
     BragDocModule,
     RouterModule,
+    QuillModule.forRoot(),
     SharedModule // Import SharedModule to use NavbarComponent and ExportService
   ],
   providers: [],

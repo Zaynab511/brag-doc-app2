@@ -1,11 +1,11 @@
 <div>
-  <h2>Brag Documents</h2>
+  <h2>Achievements List</h2>
   <ul>
     <li *ngFor="let brag of brags">
-      <span>{{ brag.date }} - {{ brag.description }} ({{ brag.impact }})</span>
-      <button (click)="deleteBrag(brag.id)">Delete</button>
-      <a [routerLink]="['/brag/edit', brag.id]">Edit</a>
+      <span>{{ brag.date | date }} - {{ brag.title }}</span>
+      <button (click)="brag.id !== undefined ? deleteBrag(brag.id) : null" class="btn btn-danger">Delete</button>
+      <a [routerLink]="['/brag/edit', brag.id]" class="btn btn-secondary">Edit</a>
     </li>
   </ul>
-  <a [routerLink]="'/brag/create'">Create New Brag Document</a>
+  <a [routerLink]="'/brag/create'" class="btn btn-primary">Create New Achievement</a>
 </div>

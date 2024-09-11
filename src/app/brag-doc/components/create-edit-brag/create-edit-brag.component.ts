@@ -20,11 +20,13 @@ export class CreateEditBragComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
+    // Updated form group to include 'impact'
     this.bragForm = this.fb.group({
       id: [null],
       title: ['', Validators.required],
       description: [''],
-      date: [new Date()]
+      date: [new Date(), Validators.required],
+      impact: ['', Validators.required] // Added the impact field
     });
   }
 
@@ -34,10 +36,7 @@ export class CreateEditBragComponent implements OnInit {
       if (id) {
         this.bragId = id;
         this.isEditMode = true;
-        // Load existing brag details
-        // Note: Hard-coded for now. Replace with actual service call.
-        const existingBrag = this.bragDocService.getAllBrags().subscribe(brags => {
-          const brag = brags.find(b => b.id === id);
+        this.bragDocService.getBragById(id).subscribe((brag: BragDoc | undefined) => {
           if (brag) {
             this.bragForm.patchValue(brag);
           }
@@ -51,11 +50,11 @@ export class CreateEditBragComponent implements OnInit {
       const bragData: BragDoc = this.bragForm.value;
       if (this.isEditMode) {
         this.bragDocService.updateBrag(bragData).subscribe(() => {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard'], { queryParams: { msg: 'Achievement successfully updated' } });
         });
       } else {
         this.bragDocService.createBrag(bragData).subscribe(() => {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard'], { queryParams: { msg: 'Achievement successfully created' } });
         });
       }
     }

@@ -20,10 +20,11 @@
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
-            "assets": [
+            "assets": [ "src/assets",
               {
                 "glob": "**/*",
                 "input": "public"
+              
               }
             ],
             "styles": [
@@ -79,6 +80,7 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
+              "src/assets",
               {
                 "glob": "**/*",
                 "input": "public"
