@@ -1,3 +1,4 @@
+// src/app/app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/components/login/login.component';
@@ -11,8 +12,8 @@ import { DashboardComponent } from './auth/components/dashboard/dashboard.compon
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'dashboard', component: DashboardComponent }, // Use DashboardComponent here
-  { path: 'brags', component: ListBragComponent },      // Route for listing brag documents
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'brags', component: ListBragComponent },
   { path: 'brag/create', component: CreateEditBragComponent },
   { path: 'brag/edit/:id', component: CreateEditBragComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },

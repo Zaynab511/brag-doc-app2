@@ -9,43 +9,43 @@ import { BragDoc } from '../../../brag-doc/models/brag-doc.model';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  brags: BragDoc[] = [];
+  successMessage: string | null = null;
+  errorMessage: string | null = null;
 
-  constructor(private bragDocService: BragDocService, private router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.loadBrags();
+    // No need to load brags in the dashboard anymore
   }
 
-  loadBrags(): void {
-    this.bragDocService.getAllBrags().subscribe(
-      (brags: BragDoc[]) => {
-        this.brags = brags;
-      },
-      (error) => {
-        console.error('Error fetching brags', error);
-      }
-    );
-  }
-
-  deleteBrag(id: number): void {
-    if (id !== undefined) {
-      this.bragDocService.deleteBrag(id).subscribe(
-        () => {
-          this.loadBrags(); // Refresh the list after deletion
-        },
-        (error) => {
-          console.error('Error deleting brag', error);
-        }
-      );
-    }
-  }
-
+  // Navigate to the create achievement screen
   navigateToCreate(): void {
     this.router.navigate(['/brag/create']);
   }
 
+  // Navigate to the view achievements screen
+  navigateToViewAchievements(): void {
+    this.router.navigate(['/brags']); // Navigate to the list of achievements
+  }
+
+  // Navigate to the user profile screen
   viewProfile(): void {
     this.router.navigate(['/profile']);
+  }
+
+  // Show a success message
+  showSuccessMessage(message: string): void {
+    this.successMessage = message;
+    setTimeout(() => {
+      this.successMessage = null;
+    }, 3000); // Clear message after 3 seconds
+  }
+
+  // Show an error message
+  showErrorMessage(message: string): void {
+    this.errorMessage = message;
+    setTimeout(() => {
+      this.errorMessage = null;
+    }, 3000); // Clear message after 3 seconds
   }
 }

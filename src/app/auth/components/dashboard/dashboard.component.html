@@ -1,24 +1,23 @@
 <div class="dashboard-container">
-  <header>
-    <div class="profile-logo" (click)="viewProfile()">
-      <img src="../../../../assets/profile-icon.jpg" alt="Profile Logo">
-    </div>
-    <h2>Dashboard</h2>
-  </header>
+  <h2>Dashboard</h2>
 
-  <div *ngIf="brags.length === 0" class="no-brags">
-    <p>No achievements yet</p>
-    <button (click)="navigateToCreate()" class="btn btn-primary">Create New Achievement</button>
+  <!-- Profile logo and dashboard header -->
+  <div class="profile-section">
+    <img src="assets/profile-icon.png" alt="Profile" />
+    <span>Dashboard</span>
   </div>
 
-  <div *ngIf="brags.length > 0" class="brag-list">
-    <button (click)="navigateToCreate()" class="btn btn-primary">Create New Achievement</button>
-    <ul>
-      <li *ngFor="let brag of brags" class="brag-item">
-        <p>{{ brag.title }} - {{ brag.date | date }}</p>
-        <button *ngIf="brag.id !== undefined" (click)="deleteBrag(brag.id!)" class="btn btn-danger">Delete</button>
-        <a [routerLink]="['/brag/edit', brag.id]" class="btn btn-secondary">Edit</a>
-      </li>
-    </ul>
+  <!-- Create New Achievement Button -->
+  <div class="action-buttons">
+    <button class="create-btn" (click)="navigateToCreate()">Create New Achievement</button>
+    <button class="view-btn" (click)="navigateToViewAchievements()">View Achievements</button>
+  </div>
+
+  <!-- Display success or error messages -->
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
   </div>
 </div>

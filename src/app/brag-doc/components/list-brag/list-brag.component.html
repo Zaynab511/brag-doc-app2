@@ -1,11 +1,14 @@
 <div>
-  <h2>Brag Documents</h2>
+  <h2>Your Achievement</h2>
+  
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  
   <ul>
     <li *ngFor="let brag of brags">
-      <span>{{ brag.date }} - {{ brag.description }} ({{ brag.impact }})</span>
+      <span>{{ brag.date }} - {{ brag.title }} - {{ brag.impact }}</span>
       <button (click)="deleteBrag(brag.id)">Delete</button>
       <a [routerLink]="['/brag/edit', brag.id]">Edit</a>
     </li>
   </ul>
-  <a [routerLink]="'/brag/create'">Create New Brag Document</a>
 </div>
