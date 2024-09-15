@@ -15,7 +15,16 @@
   
         <div class="form-group">
           <label for="description">Description</label>
-          <div id="editor" class="form-control quill-editor" style="height: 200px;"></div>
+          <editor
+            [init]="{
+            height: 200,
+            menubar: false,
+            plugins: 'link image code',
+            toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+            }"
+            formControlName="description"
+        ></editor>
+
         </div>
   
         <div class="form-group">

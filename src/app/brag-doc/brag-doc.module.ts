@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; // Import FormsModule and ReactiveFormsModule
 import { RouterModule } from '@angular/router'; // Import RouterModule
-
+import { EditorModule } from '@tinymce/tinymce-angular'; // Import EditorModule here
 import { ListBragComponent } from './components/list-brag/list-brag.component';
 import { CreateBragComponent } from './components/create-edit-brag/create-brag.component';
 import { BragDocService } from './services/brag-doc.service'; // Correct import path
@@ -19,6 +19,7 @@ import { EditBragComponent } from './components/edit-brag/edit-brag.component';
     CommonModule,
     ReactiveFormsModule, // Add ReactiveFormsModule here
     FormsModule, // Add FormsModule here
+    EditorModule, // Ensure EditorModule is imported here
     RouterModule, // Add RouterModule here (useful if there are child routes)
   ],
   providers: [

@@ -15,7 +15,11 @@
 
       <div class="form-group">
         <label for="description">Description</label>
-        <quill-editor formControlName="description" class="form-control quill-editor"></quill-editor>
+          <editor
+          formControlName="description"
+          apiKey="ma46okfsa491hljt5w04ylg9a0o4iww9mk50vg9q0hmqvz93"
+          [init]="editorConfig"
+        ></editor>
       </div>
 
       <div class="form-group">
