@@ -14,6 +14,7 @@ import { QuillConfigModule } from 'ngx-quill/config';
 import { RouterModule } from '@angular/router'; // Ensure RouterModule is imported
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import hljs from 'highlight.js/lib/core';
 
 @NgModule({
   declarations: [
@@ -30,10 +31,10 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     FormsModule,
     RouterModule,
     SharedModule, // Import SharedModule to use NavbarComponent and ExportService
-    QuillModule.forRoot(),  // Initialize QuillModule
-    QuillConfigModule.forRoot({
+    //QuillModule.forRoot(),  // Initialize QuillModule
+    QuillModule.forRoot({
       modules: {
-        syntax: true, 
+        syntax: true,
         toolbar: [
             ['bold', 'italic', 'underline'],        // toggled buttons
             [{ 'header': 1 }, { 'header': 2 }],     // custom button values

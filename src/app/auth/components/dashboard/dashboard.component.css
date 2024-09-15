@@ -11,19 +11,19 @@ header {
 }
 
 .profile-logo {
-  width: 40px;
-  height: 40px;
-  margin-right: 20px;
+  width: 30px; /* Adjust size */
+  height: 30px; /* Adjust size */
+  margin-right: 10px; /* Adjust margin as needed */
   cursor: pointer;
+  overflow: hidden; /* Hide overflow if image is larger */
 }
 
 .profile-logo img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
+  object-fit: cover; /* Ensure image covers the container without distortion */
+  border-radius: 50%; /* Make it round */
 }
-
 h2 {
   margin: 0;
 }
@@ -78,24 +78,11 @@ h2 {
 .brag-item p {
   margin: 0;
 }
-.profile-logo {
-  width: 50px; /* Adjust size */
-  height: 50px; /* Adjust size */
-  margin-right: 20px;
-  cursor: pointer;
-  overflow: hidden; /* Hide overflow if image is larger */
-}
-.profile-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensure image covers the container without distortion */
-  border-radius: 50%; /* Make it round */
-}
+
 @media (max-width: 768px) {
   .dashboard-container {
     padding: 10px;
   }
-
   
   .btn {
     width: 100%;

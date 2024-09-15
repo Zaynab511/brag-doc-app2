@@ -1,0 +1,128 @@
+/* Style for the main card container */
+.card {
+  max-width: 600px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 20px;
+}
+
+/* Style for the card body */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Style for headings */
+h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Style for the form groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+/* Label styles */
+label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+/* Input field styles */
+input[type="text"], input[type="date"], .quill-editor {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+/* Style for input focus */
+input:focus, .quill-editor:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Quill editor container styles */
+.quill-editor {
+  height: 200px;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 4px;
+}
+
+/* Button styles */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Success message */
+.alert-success {
+  margin-top: 15px;
+  color: #28a745;
+  background-color: #d4edda;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Error message */
+.alert-danger {
+  margin-top: 15px;
+  color: #dc3545;
+  background-color: #f8d7da;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+
+button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+/* Success and error messages */
+.alert {
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .card {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  button {
+    padding: 8px;
+  }
+}

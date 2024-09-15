@@ -20,7 +20,7 @@ export class BragDocService {
       id: 2,
       title: 'Achievement 2',
       description: 'Description for Achievement 2',
-      date:'2024-02-01',
+      date: '2024-02-01',
       impact: 'Medium'
     },
     {
@@ -51,7 +51,7 @@ export class BragDocService {
     const newId = BragDocService.HARD_CODED_BRAGS.length > 0 
       ? Math.max(...BragDocService.HARD_CODED_BRAGS.map(brag => brag.id!)) + 1 
       : 1;
-      
+
     newBrag.id = newId;
     BragDocService.HARD_CODED_BRAGS.push(newBrag);
 
@@ -62,6 +62,8 @@ export class BragDocService {
   updateBrag(id: number, updatedBrag: BragDoc): Observable<any> {
     const index = BragDocService.HARD_CODED_BRAGS.findIndex(brag => brag.id === id);
     if (index !== -1) {
+      // Ensure the updated brag has the same ID
+      updatedBrag.id = id;
       BragDocService.HARD_CODED_BRAGS[index] = updatedBrag;
       return of({ success: true }).pipe(delay(1000));
     }
