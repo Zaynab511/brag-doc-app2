@@ -79,4 +79,5 @@ export class BragDocService {
     }
     return of({ error: 'Brag not found' }).pipe(delay(1000));
   }
+  
 }

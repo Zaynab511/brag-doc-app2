@@ -18,7 +18,8 @@ const routes: Routes = [
   { path: 'brag/create', component: CreateBragComponent },
   { path: 'brag/edit/:id', component: EditBragComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'list-brag', component: ListBragComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login' }
 ];

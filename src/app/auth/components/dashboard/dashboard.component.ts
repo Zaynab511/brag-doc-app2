@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BragDocService } from '../../../brag-doc/services/brag-doc.service';
-import { BragDoc } from '../../../brag-doc/models/brag-doc.model';
 
 @Component({
   selector: 'app-dashboard',

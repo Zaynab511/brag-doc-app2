@@ -42,6 +42,8 @@ export class ListBragComponent implements OnInit {
           console.error(error);
         }
       );
+    } else {
+      console.error('ID is undefined');
     }
   }
 }
