@@ -1,17 +1,16 @@
-
 // src/app/app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.routes'; // Ensure the correct path
 import { AuthModule } from './auth/auth.module';
 import { BragDocModule } from './brag-doc/brag-doc.module';
 import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
-import { QuillModule } from 'ngx-quill';
-
+import { EditorModule,TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 import { RouterModule } from '@angular/router'; // Ensure RouterModule is imported
+
 @NgModule({
   declarations: [
     AppComponent
@@ -24,11 +23,14 @@ import { RouterModule } from '@angular/router'; // Ensure RouterModule is import
     AppRoutingModule, // Make sure you import AppRoutingModule for routing
     AuthModule,
     BragDocModule,
+    FormsModule,
     RouterModule,
-    QuillModule.forRoot(),
-    SharedModule // Import SharedModule to use NavbarComponent and ExportService
+    SharedModule, // Import SharedModule to use NavbarComponent and ExportService
+    EditorModule // Import TinyMCE EditorModule
   ],
-  providers: [],
+  providers: [
+    {provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -18,6 +18,12 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+<<<<<<< HEAD
+    "@tinymce/tinymce-angular": "^8.0.1",
+    "@types/quill": "^2.0.14",
+    "highlight.js": "^11.10.0",
+=======
+>>>>>>> main
     "ngx-quill": "^26.0.8",
     "quill": "^2.0.2",
     "rxjs": "~7.8.0",

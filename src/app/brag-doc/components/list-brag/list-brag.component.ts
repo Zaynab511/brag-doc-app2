@@ -9,6 +9,8 @@ import { BragDoc } from '../../models/brag-doc.model';
 })
 export class ListBragComponent implements OnInit {
   brags: BragDoc[] = [];
+  successMessage: string | null = null;
+  errorMessage: string | null = null;
 
   constructor(private bragDocService: BragDocService) { }
 
@@ -22,7 +24,8 @@ export class ListBragComponent implements OnInit {
         this.brags = brags;
       },
       (error) => {
-        console.error('Error fetching brags', error);
+        this.errorMessage = 'Error fetching achievements';
+        console.error(error);
       }
     );
   }
@@ -31,10 +34,12 @@ export class ListBragComponent implements OnInit {
     if (id !== undefined) {
       this.bragDocService.deleteBrag(id).subscribe(
         () => {
+          this.successMessage = 'Achievement deleted successfully!';
           this.loadBrags(); // Refresh the list after deletion
         },
         (error) => {
-          console.error('Error deleting brag', error);
+          this.errorMessage = 'Error deleting achievement';
+          console.error(error);
         }
       );
     } else {

@@ -1,4 +1,18 @@
 <div>
+<<<<<<< HEAD
+  <h2>Your Achievement</h2>
+  
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  
+  <ul>
+    <li *ngFor="let brag of brags">
+      <span>{{ brag.date }} - {{ brag.title }} - {{ brag.impact }}</span>
+      <button (click)="deleteBrag(brag.id)">Delete</button>
+      <a [routerLink]="['/brag/edit', brag.id]">Edit</a>
+    </li>
+  </ul>
+=======
   <h2>Achievements List</h2>
   <ul>
     <li *ngFor="let brag of brags">
@@ -8,4 +22,5 @@
     </li>
   </ul>
   <a [routerLink]="'/brag/create'" class="btn btn-primary">Create New Achievement</a>
+>>>>>>> main
 </div>

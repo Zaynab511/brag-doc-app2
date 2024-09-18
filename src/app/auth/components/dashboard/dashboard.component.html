@@ -1,15 +1,23 @@
 <div class="dashboard-container">
-  <header>
-    <div class="profile-logo" (click)="viewProfile()">
-      <img src="../../../../assets/profile-icon.jpg" alt="Profile Logo">
-    </div>
-    <h2>Dashboard</h2>
-  </header>
+  <h2>Dashboard</h2>
 
-  <div *ngIf="message" class="alert alert-success">
-    {{ message }}
+  <!-- Profile logo and dashboard header -->
+  <div class="profile-section">
+    <img src="./../../../../assets/profile-icon.jpg" alt="Profile" />
+    <span>Dashboard</span>
   </div>
 
-  <button (click)="navigateToCreate()" class="btn btn-primary">Create New Achievement</button>
-  <button (click)="navigateToView()" class="btn btn-secondary">View Achievements</button>
+  <!-- Create New Achievement Button -->
+  <div class="action-buttons">
+    <button class="create-btn" (click)="navigateToCreate()">Create New Achievement</button>
+    <button class="view-btn" (click)="navigateToViewAchievements()">View Achievements</button>
+  </div>
+
+  <!-- Display success or error messages -->
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
 </div>
