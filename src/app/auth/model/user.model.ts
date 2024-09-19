@@ -1,9 +1,9 @@
 export interface User {
-  id?: number;
+  id?: number; 
   email: string;
-  password :string;
-  name?: string;
-  jobTitle?: string;
-  industry?: string;
-  contact?: string;
+  PasswordHash: string; // Adjust according to backend requirements
+  Name: string;
+  JobTitle: string;
+  Industry: string;
+  Contact: string;
 }

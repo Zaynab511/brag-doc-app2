@@ -33,8 +33,8 @@ export class ListBragComponent implements OnInit {
   deleteBrag(id: number | undefined): void {
     if (id !== undefined) {
       this.bragDocService.deleteBrag(id).subscribe(
-        () => {
-          this.successMessage = 'Achievement deleted successfully!';
+        (response) => {
+          this.successMessage = response.message || 'Achievement deleted successfully!';
           this.loadBrags(); // Refresh the list after deletion
         },
         (error) => {

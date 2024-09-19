@@ -1,83 +1,71 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { BragDoc } from '../models/brag-doc.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BragDocService {
-  // Adding hard-coded achievements for testing
-  private static readonly HARD_CODED_BRAGS: BragDoc[] = [
-    {
-      id: 1,
-      title: 'Achievement 1',
-      description: 'Description for Achievement 1',
-      date: '2024-01-01',
-      impact: 'High'
-    },
-    {
-      id: 2,
-      title: 'Achievement 2',
-      description: 'Description for Achievement 2',
-      date: '2024-02-01',
-      impact: 'Medium'
-    },
-    {
-      id: 3,
-      title: 'Achievement 3',
-      description: 'Description for Achievement 3',
-      date: '2024-03-01',
-      impact: 'Low'
-    }
-  ];
+  private apiUrl = 'https://localhost:7010/api/Achievements'; // Update with your actual API URL
 
-  constructor() {}
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}` // Update according to your auth strategy
+    })
+  };
+
+  constructor(private http: HttpClient) {}
 
   // Get all brag documents
   getAllBrags(): Observable<BragDoc[]> {
-    return of(BragDocService.HARD_CODED_BRAGS).pipe(delay(1000));
+    return this.http.get<BragDoc[]>(`${this.apiUrl}/GetAll`, this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
   }
 
   // Get brag by ID
-  getBragById(id: number): Observable<BragDoc | undefined> {
-    const brag = BragDocService.HARD_CODED_BRAGS.find(b => b.id === id);
-    return of(brag).pipe(delay(1000));
+  getBragById(id: number): Observable<BragDoc> {
+    return this.http.get<BragDoc>(`${this.apiUrl}/GetById/${id}`, this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
   }
 
-  // Create a new brag document
+  // Modify your createBrag function to log the response
   createBrag(newBrag: BragDoc): Observable<any> {
-    // Auto-increment the ID
-    const newId = BragDocService.HARD_CODED_BRAGS.length > 0 
-      ? Math.max(...BragDocService.HARD_CODED_BRAGS.map(brag => brag.id!)) + 1 
-      : 1;
+  return this.http.post<any>(`${this.apiUrl}/Create`, newBrag, this.httpOptions).pipe(
+    map((response) => {
+      // Log the full response to inspect it
+      console.log('Response from API:', response);
+      return response; // Ensure the response is returned properly
+    }),
+    catchError((error) => {
+      console.error('An error occurred:', error); // Log the error for debugging
+      return throwError(() => new Error('Something went wrong; please try again later.'));
+    })
+  );
+}
 
-    newBrag.id = newId;
-    BragDocService.HARD_CODED_BRAGS.push(newBrag);
-
-    return of({ success: true }).pipe(delay(1000));
-  }
 
   // Update an existing brag document
   updateBrag(id: number, updatedBrag: BragDoc): Observable<any> {
-    const index = BragDocService.HARD_CODED_BRAGS.findIndex(brag => brag.id === id);
-    if (index !== -1) {
-      // Ensure the updated brag has the same ID
-      updatedBrag.id = id;
-      BragDocService.HARD_CODED_BRAGS[index] = updatedBrag;
-      return of({ success: true }).pipe(delay(1000));
-    }
-    return of({ error: 'Brag not found' }).pipe(delay(1000));
+    return this.http.put<any>(`${this.apiUrl}/Update/${id}`, updatedBrag, this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
   }
 
   // Delete a brag document
   deleteBrag(id: number): Observable<any> {
-    const index = BragDocService.HARD_CODED_BRAGS.findIndex(brag => brag.id === id);
-    if (index !== -1) {
-      BragDocService.HARD_CODED_BRAGS.splice(index, 1);
-      return of({ success: true }).pipe(delay(1000));
-    }
-    return of({ error: 'Brag not found' }).pipe(delay(1000));
+    return this.http.delete<any>(`${this.apiUrl}/Delete/${id}`, this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
   }
-  
+
+  // Handle errors from HTTP requests
+  private handleError(error: any): Observable<never> {
+    console.error('An error occurred:', error);
+    return throwError(() => new Error('Something went wrong; please try again later.'));
+  }
 }

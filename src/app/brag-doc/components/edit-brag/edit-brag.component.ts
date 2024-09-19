@@ -26,7 +26,7 @@ export class EditBragComponent implements OnInit {
       title: ['', Validators.required],
       description: [''],
       date: [new Date().toISOString().split('T')[0], Validators.required],
-      impact: ['', Validators.required]
+      tag: ['', Validators.required]
     });
   }
 
@@ -48,7 +48,7 @@ export class EditBragComponent implements OnInit {
             title: brag.title,
             date: brag.date,
             description: brag.description,
-            impact: brag.impact
+            tag: brag.tag
           });
         } else {
           this.errorMessage = 'Brag document not found!';

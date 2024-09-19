@@ -13,19 +13,20 @@ export class CreateBragComponent implements OnInit {
   bragForm: FormGroup;
   successMessage: string = '';
   errorMessage: string = '';
-// Define TinyMCE editor options here
-editorConfig = {
-  height: 300,
-  menubar: true,
-  plugins: 'link image code lists wordcount',
-  toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code | numlist bullist',
-  content_css: 'https://www.tiny.cloud/css/codepen.min.css',
-  setup: (editor: any) => {
-    editor.on('change', () => {
-      this.bragForm.get('description')?.setValue(editor.getContent());
-    });
-  }
-};
+
+  editorConfig = {
+    height: 300,
+    menubar: true,
+    plugins: 'link image code lists wordcount',
+    toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code | numlist bullist',
+    content_css: 'https://www.tiny.cloud/css/codepen.min.css',
+    setup: (editor: any) => {
+      editor.on('change', () => {
+        this.bragForm.get('description')?.setValue(editor.getContent());
+      });
+    }
+  };
+
   constructor(
     private fb: FormBuilder,
     private bragDocService: BragDocService,
@@ -33,9 +34,9 @@ editorConfig = {
   ) {
     this.bragForm = this.fb.group({
       title: ['', Validators.required],
-      description: [''], // TinyMCE's content will be handled directly
+      description: [''],
       date: [new Date().toISOString().split('T')[0], Validators.required],
-      impact: ['', Validators.required]
+      tag: ['', Validators.required]  // Replacing 'impact' with 'tag'
     });
   }
 
@@ -47,12 +48,8 @@ editorConfig = {
 
       this.bragDocService.createBrag(bragData).subscribe(
         (response) => {
-          if (response.success) {
-            this.successMessage = 'Achievement created successfully!';
-            setTimeout(() => this.router.navigate(['/brags']), 2000);
-          } else {
-            this.errorMessage = 'Error creating achievement';
-          }
+          this.successMessage = response.message || 'Achievement created successfully!';
+          setTimeout(() => this.router.navigate(['/brags']), 2000);
         },
         (error) => {
           this.errorMessage = 'Error creating achievement';

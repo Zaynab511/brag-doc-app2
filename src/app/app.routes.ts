@@ -9,7 +9,7 @@ import { ForgotPasswordComponent } from './auth/components/forgot-password/forgo
 import { ProfileComponent } from './auth/components/profile/profile.component';
 import { DashboardComponent } from './auth/components/dashboard/dashboard.component';
 import { EditBragComponent } from './brag-doc/components/edit-brag/edit-brag.component';
-
+import { AuthGuard } from './auth/auth.guard';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

@@ -19,11 +19,11 @@ import { RouterModule } from '@angular/router'; // Ensure RouterModule is import
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    HttpClientModule,
     AppRoutingModule, // Make sure you import AppRoutingModule for routing
     AuthModule,
     BragDocModule,
     FormsModule,
+    HttpClientModule, // add this line
     RouterModule,
     SharedModule, // Import SharedModule to use NavbarComponent and ExportService
     EditorModule // Import TinyMCE EditorModule

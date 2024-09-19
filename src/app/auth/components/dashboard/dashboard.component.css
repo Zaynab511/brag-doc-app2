@@ -1,4 +1,4 @@
-.dashboard-container {
+.dashboard-container { 
   padding: 50px;
   background-color: #f9f9f9;
   margin-top: 100px; /* Increased margin to push the dashboard content below the navbar */
@@ -10,20 +10,22 @@ header {
   margin-bottom: 20px;
 }
 
-.profile-logo {
-  width: 30px; /* Adjust size */
-  height: 30px; /* Adjust size */
+.profile-section {
+  width: 50px; /* Set a fixed width */
+  height: 50px; /* Set a fixed height */
   margin-right: 10px; /* Adjust margin as needed */
   cursor: pointer;
   overflow: hidden; /* Hide overflow if image is larger */
+  border-radius: 50%; /* Make it round */
 }
 
-.profile-logo img {
+.profile-section img {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Ensure image covers the container without distortion */
   border-radius: 50%; /* Make it round */
 }
+
 h2 {
   margin: 0;
 }

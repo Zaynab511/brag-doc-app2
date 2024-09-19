@@ -25,7 +25,6 @@ export class LoginComponent {
       this.authService.login(email, password).subscribe(
         (result: { success: boolean, message: string }) => {
           if (result.success) {
-            localStorage.setItem('token', 'hardcoded-token'); // Hardcoded for now
             this.router.navigate(['/dashboard']);
           } else {
             this.errorMessage = result.message;
