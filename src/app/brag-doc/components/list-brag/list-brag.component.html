@@ -1,11 +1,19 @@
 <div>
-  <h2>Achievements List</h2>
+  <h2>Your Achievement</h2>
+  
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  
   <ul>
     <li *ngFor="let brag of brags">
-      <span>{{ brag.date | date }} - {{ brag.title }}</span>
-      <button (click)="brag.id !== undefined ? deleteBrag(brag.id) : null" class="btn btn-danger">Delete</button>
-      <a [routerLink]="['/brag/edit', brag.id]" class="btn btn-secondary">Edit</a>
+      <span>{{ brag.title }} </span>
+      <button (click)="deleteBrag(brag.id)">Delete</button>
+      <a [routerLink]="['/brag/edit', brag.id]">Edit</a>
     </li>
   </ul>
-  <a [routerLink]="'/brag/create'" class="btn btn-primary">Create New Achievement</a>
+    <!-- Export Achievements Button -->
+    <div class="export-button-container">
+      <button class="export-btn" (click)="exportAchievements()">Export Achievements</button>
+    </div>
+  
 </div>

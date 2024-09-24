@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { User } from '../../model/user.model';
 
 @Component({
   selector: 'app-register',
@@ -26,26 +25,36 @@ export class RegisterComponent {
       this.errorMessage = 'Passwords do not match.';
       return;
     }
-
-    const newUser: User = {
+  
+    const newUser = {
       email: this.email,
-      password: this.password,
-      name: this.name,
-      jobTitle: this.jobTitle,
-      industry: this.industry,
-      contact: this.contact
+      PasswordHash: this.password,
+      Name: this.name,
+      JobTitle: this.jobTitle,
+      Industry: this.industry,
+      Contact: this.contact
     };
-
-    this.authService.register(newUser).subscribe(success => {
-      if (success) {
-        this.successMessage = 'Registration successful. Please log in.';
-        this.router.navigate(['/login']);
-      } else {
-        this.errorMessage = 'Registration failed. Email might already be in use.';
+  
+    this.authService.register(newUser).subscribe({
+      next: (response: any) => {
+        console.log('Registration response:', response);
+        if (response && response.message) {
+          this.successMessage = 'Successfully Registered'; // Make sure it's a string
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 2000);
+        } else {
+          this.errorMessage = 'Registration failed. Please try again.';
+        }
+      },
+      error: (err) => {
+        console.error('Registration error:', err);
+        this.errorMessage = 'An error occurred. Please try again.';
       }
     });
   }
-
+  
+  
   loginWithGoogle(): void {
     console.log('Logging in with Google');
   }

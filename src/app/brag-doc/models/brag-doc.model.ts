@@ -3,6 +3,6 @@ export interface BragDoc {
     title:string;
     date: string;
     description: string;
-    impact: string;
+    tag: string;
   }
   
