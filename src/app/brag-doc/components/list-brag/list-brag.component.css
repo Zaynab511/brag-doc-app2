@@ -67,6 +67,25 @@ button {
   border: none;
   cursor: pointer;
 }
+.export-button-container {
+  display: flex;
+  justify-content: center; /* Center the button */
+  margin-top: 20px; /* Space above the button */
+}
+
+.export-btn {
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Green background */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.export-btn:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
 
 button:hover {
   background-color: darkred;

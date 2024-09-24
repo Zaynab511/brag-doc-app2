@@ -24,7 +24,7 @@
 
     <button type="submit">Register</button>
     <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
-    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p> <!-- Ensure this displays the string -->
   </form>
 
   <div class="button-group">

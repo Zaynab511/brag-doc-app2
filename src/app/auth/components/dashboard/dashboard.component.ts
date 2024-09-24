@@ -20,6 +20,8 @@ export class DashboardComponent implements OnInit {
   navigateToCreate(): void {
     this.router.navigate(['/brag/create']);
   }
+  //export code
+  
 
   // Navigate to the view achievements screen
   navigateToViewAchievements(): void {

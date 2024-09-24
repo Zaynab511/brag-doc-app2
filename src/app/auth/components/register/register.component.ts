@@ -25,25 +25,26 @@ export class RegisterComponent {
       this.errorMessage = 'Passwords do not match.';
       return;
     }
-
+  
     const newUser = {
       email: this.email,
-      PasswordHash: this.password, // Ensure this matches backend logic
+      PasswordHash: this.password,
       Name: this.name,
       JobTitle: this.jobTitle,
       Industry: this.industry,
       Contact: this.contact
     };
-
+  
     this.authService.register(newUser).subscribe({
       next: (response: any) => {
-        if (response.message === 'User registered successfully.') {
-          this.successMessage = response.message;
+        console.log('Registration response:', response);
+        if (response && response.message) {
+          this.successMessage = 'Successfully Registered'; // Make sure it's a string
           setTimeout(() => {
             this.router.navigate(['/login']);
-          }, 2000); // Delay for user to see success message
+          }, 2000);
         } else {
-          this.errorMessage = response.message || 'Registration failed. Please try again.';
+          this.errorMessage = 'Registration failed. Please try again.';
         }
       },
       error: (err) => {
@@ -52,7 +53,8 @@ export class RegisterComponent {
       }
     });
   }
-
+  
+  
   loginWithGoogle(): void {
     console.log('Logging in with Google');
   }

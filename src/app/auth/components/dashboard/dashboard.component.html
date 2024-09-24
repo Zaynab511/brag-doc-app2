@@ -7,11 +7,12 @@
     <span>Dashboard</span>
   </div>
 
-  <!-- Create New Achievement Button -->
+  <!-- Action Buttons -->
   <div class="action-buttons">
     <button class="create-btn" (click)="navigateToCreate()">Create New Achievement</button>
     <button class="view-btn" (click)="navigateToViewAchievements()">View Achievements</button>
   </div>
+
 
   <!-- Display success or error messages -->
   <div *ngIf="successMessage" class="success-message">

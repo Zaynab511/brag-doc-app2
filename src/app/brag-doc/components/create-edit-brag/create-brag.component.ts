@@ -45,7 +45,7 @@ export class CreateBragComponent implements OnInit {
   onSubmit(): void {
     if (this.bragForm.valid) {
       const bragData: BragDoc = this.bragForm.value;
-
+  
       this.bragDocService.createBrag(bragData).subscribe(
         (response) => {
           this.successMessage = response.message || 'Achievement created successfully!';
@@ -58,4 +58,5 @@ export class CreateBragComponent implements OnInit {
       );
     }
   }
+  
 }
