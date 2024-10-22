@@ -3,12 +3,14 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { BragDoc } from '../models/brag-doc.model';
+import { Tag } from '../models/tag.model';  // Import Tag model
 
 @Injectable({
   providedIn: 'root'
 })
 export class BragDocService {
   private apiUrl = 'https://localhost:7010/api/Achievements'; // Update with your actual API URL
+  private tagApiUrl = 'https://localhost:7010/api/Tags'; // API endpoint for tags
 
   constructor(private http: HttpClient) {}
 
@@ -50,6 +52,7 @@ export class BragDocService {
     );
   }
 
+  // Update a brag document
   updateBrag(id: number, updatedBrag: BragDoc): Observable<{ message: string }> {
     return this.http.put(`${this.apiUrl}/Update/${id}`, updatedBrag, {
       ...this.getHttpOptions(),
@@ -65,8 +68,6 @@ export class BragDocService {
       })
     );
   }
-  
-  
 
   // Delete a brag document
   deleteBrag(id: number): Observable<{ message: string }> {
@@ -80,6 +81,23 @@ export class BragDocService {
       catchError((error) => this.handleTextError(error, 'Error deleting achievement'))
     );
   }
+
+  // Get all available tags
+  getTags(): Observable<Tag[]> {
+    return this.http.get<Tag[]>(`${this.apiUrl}/GetTags`, this.getHttpOptions()).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+// Get AI suggestions for tags, accepting a description as a parameter
+getAISuggestions(description: string): Observable<string[]> {
+  return this.http.get<string[]>(`${this.apiUrl}/GetTagSuggestions`, {
+    params: { description }, // Pass description as a query parameter
+    ...this.getHttpOptions()
+  }).pipe(
+    catchError(this.handleError)
+  );
+}
 
   // Handle text-based error responses for non-JSON responses
   private handleTextError(error: HttpErrorResponse, fallbackMessage: string): Observable<never> {

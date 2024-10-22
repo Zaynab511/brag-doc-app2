@@ -59,10 +59,6 @@ export class RegisterComponent {
     console.log('Logging in with Google');
   }
 
-  loginWithLinkedIn(): void {
-    console.log('Logging in with LinkedIn');
-  }
-
   goToLogin(): void {
     this.router.navigate(['/login']);
   }

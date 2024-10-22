@@ -8,19 +8,23 @@ import { CreateBragComponent } from './components/create-edit-brag/create-brag.c
 import { BragDocService } from './services/brag-doc.service'; // Correct import path
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { EditBragComponent } from './components/edit-brag/edit-brag.component';
+import { SanitizePipe } from './sanitizer.pipe';
+
 
 @NgModule({
   declarations: [
     ListBragComponent,
     CreateBragComponent,
-    EditBragComponent
+    EditBragComponent,
+    SanitizePipe, 
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule, // Add ReactiveFormsModule here
     FormsModule, // Add FormsModule here
     EditorModule, // Ensure EditorModule is imported here
-    RouterModule, // Add RouterModule here (useful if there are child routes)
+    RouterModule,
+    // Add RouterModule here (useful if there are child routes)
   ],
   providers: [
     BragDocService // Provide BragDocService
@@ -29,7 +33,8 @@ import { EditBragComponent } from './components/edit-brag/edit-brag.component';
   exports: [
     ListBragComponent,
     CreateBragComponent,
-    EditBragComponent
+    EditBragComponent,
+    SanitizePipe,
   ]
 })
 export class BragDocModule { }

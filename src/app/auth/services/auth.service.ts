@@ -57,7 +57,9 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('token'); // Remove token on logout
   }
-
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token'); // Check if the token exists
+  }
   loginWithGoogle(): Observable<boolean> {
     return this.http.post<boolean>(`${this.apiUrl}/GoogleLogin`, {}).pipe(
       catchError(error => of(false))

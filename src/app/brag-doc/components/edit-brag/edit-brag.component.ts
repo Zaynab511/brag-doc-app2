@@ -53,7 +53,7 @@ export class EditBragComponent implements OnInit {
             title: brag.title,
             description: brag.description,
             date: formattedDate, // Set date in proper format
-            tag: brag.tag
+            tag: brag.achievementTags
           });
         } else {
           this.errorMessage = 'Brag document not found!';

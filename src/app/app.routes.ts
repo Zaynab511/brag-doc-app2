@@ -10,7 +10,9 @@ import { ProfileComponent } from './auth/components/profile/profile.component';
 import { DashboardComponent } from './auth/components/dashboard/dashboard.component';
 import { EditBragComponent } from './brag-doc/components/edit-brag/edit-brag.component';
 import { AuthGuard } from './auth/auth.guard';
+import { LandingPageComponent } from './auth/components/landing-page/landing-page.component';
 const routes: Routes = [
+  { path: '', component: LandingPageComponent },  // Default route for landing page
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent },
@@ -20,8 +22,7 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'list-brag', component: ListBragComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '**', redirectTo: 'login' }
+  { path: '**', redirectTo: 'login' } // Wildcard route for unknown paths
 ];
 
 @NgModule({
